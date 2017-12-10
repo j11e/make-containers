@@ -1,0 +1,1 @@
+Walking through the examples of [http://crosbymichael.com/creating-containers-part-1.html](http://crosbymichael.com/creating-containers-part-1.html), converting them to Go, and maybe writing new articles.
