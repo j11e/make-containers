@@ -1,0 +1,5 @@
+# Ignore everything but the source files... so, ignore the binaries
+C/*
+Go/*
+!C/*.c
+!Go/*.go
