@@ -19,18 +19,15 @@ struct clone_args {
 static int child_exec(void *stuff)
 {
         struct clone_args *args = (struct clone_args *)stuff;
-
         if (mount("/", "/", NULL, MS_PRIVATE, "") < 0) {
 		fprintf(stderr, "Cannot set MS_PRIVATE flag to root filesystem (error code %d)\n", errno);
 		return -1;
 	}
-
         if (mount("none", "/mytmp", "tmpfs", 0, "") != 0) {
                 fprintf(stderr, "failed to mount tmpfs %s\n",
                         strerror(errno));
                 exit(-1);
         }
-
         if (execvp(args->argv[0], args->argv) != 0) {
                 fprintf(stderr, "failed to execvp argments %s\n",
                         strerror(errno));

@@ -18,6 +18,12 @@ struct clone_args {
 static int child_exec(void *stuff)
 {
         struct clone_args *args = (struct clone_args *)stuff;
+        const char * new_hostname = "blerg";
+        if (sethostname(new_hostname, strlen(new_hostname)) != 0) {
+                fprintf(stderr, "failed to execvp argments %s\n",
+                        strerror(errno));
+                exit(-1);
+        }
         if (execvp(args->argv[0], args->argv) != 0) {
                 fprintf(stderr, "failed to execvp argments %s\n",
                         strerror(errno));
